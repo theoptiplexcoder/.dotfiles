@@ -1,6 +1,3 @@
-vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-x>', ':q<CR>', { noremap = true, silent = true })
-vim.keymap.set('n','-',':Ex<CR>',{noremap=true,silent=true})
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -27,8 +24,8 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- add your plugins here
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    -- import your plugins
+    {import="plugins"},
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
@@ -36,10 +33,3 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
-
-
-
-require('catppuccin').setup({
-	flavour="mocha",
-})
-vim.cmd.colorscheme("catppuccin")
