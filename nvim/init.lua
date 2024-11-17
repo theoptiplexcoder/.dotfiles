@@ -9,7 +9,4 @@ vim.keymap.set('n','<C-x>',':x<CR>',{noremap=true,silent=true})
 --back to explorer
 vim.keymap.set('n','-',':Ex<CR>',{noremap=true,silent=true})
 
-require("config.lazy")
-
---applying colorscheme
-vim.cmd.colorscheme "catppuccin-mocha"
+require("config.init")
