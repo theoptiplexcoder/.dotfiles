@@ -5,6 +5,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'saadparwaiz1/cmp_luasnip',
       'L3MON4D3/LuaSnip',
+      'rafamadriz/friendly-snippets',
       'neovim/nvim-lspconfig',
     },
     config = function()
@@ -12,6 +13,7 @@ return {
       local luasnip = require('luasnip')
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      require("luasnip.loaders.from_vscode").lazy_load()
 
       -- Set up cmp (you can customize this further)
       cmp.setup({
@@ -25,22 +27,23 @@ return {
           ['<CR>'] = cmp.mapping.confirm({ select = true}),
 	   ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
 	   ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
-	   ['<C-j>'] = cmp.mapping.select_next_item(),
-           ['<C-k>'] = cmp.mapping.select_prev_item(),
+	   ['<C-p>'] = cmp.mapping.select_next_item(),
+           ['<C-n>'] = cmp.mapping.select_prev_item(),
         }),
-	
         sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
+          { name = 'luasnip'},
+	  {name = 'nvim_lsp'},
         },
       })
 
       -- Configure LSP servers
-      local servers = { "lua_ls","vimls" }
+      local servers = { "lua_ls","vimls"}
       for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup {
-          capabilities = capabilities,
-        }
+      	local ok, server = pcall(function() return lspconfig[lsp] end)
+	if ok then
+		server.setup{capabilities = capabilities}
+
+	end
       end
     end,
   },
@@ -53,7 +56,7 @@ return {
   		config = function()
   		  require("mason").setup()
   		  require("mason-lspconfig").setup({
-  		    ensure_installed = { "lua_ls", "typescript_language_server" }, -- auto-installs these
+  		    ensure_installed = {"lua_ls","vimls"}, -- auto-installs these
   		  })
   		end,
 	}
