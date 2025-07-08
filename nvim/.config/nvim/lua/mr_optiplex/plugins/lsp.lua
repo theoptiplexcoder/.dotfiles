@@ -13,7 +13,6 @@ return {
       local luasnip = require('luasnip')
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      require("luasnip.loaders.from_vscode").lazy_load()
 
       -- Set up cmp (you can customize this further)
       cmp.setup({
@@ -56,7 +55,7 @@ return {
   		config = function()
   		  require("mason").setup()
   		  require("mason-lspconfig").setup({
-  		    ensure_installed = {"lua_ls","vimls"}, -- auto-installs these
+  		  ensure_installed = {"lua_ls","vimls","quick_lint_js"}, -- auto-installs these
   		  })
   		end,
 	}
