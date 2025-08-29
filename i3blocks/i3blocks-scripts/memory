@@ -1,0 +1,40 @@
+#!/bin/sh
+TYPE="${BLOCK_INSTANCE:-mem}"
+awk -v type=$TYPE '
+/^MemTotal:/ {
+	mem_total=$2
+}
+/^MemFree:/ {
+	mem_free=$2
+}
+/^Buffers:/ {
+	mem_free+=$2
+}
+/^Cached:/ {
+	mem_free+=$2
+}
+/^SwapTotal:/ {
+	swap_total=$2
+}
+/^SwapFree:/ {
+	swap_free=$2
+}
+END {
+	# full text
+	if (type == "swap")
+#		printf("%.1fG\n-\n#a1efe4", (swap_total-swap_free)/1024/1024)
+		printf("%.1fG\n-\n#aaaaaa", (swap_total-swap_free)/1024/1024)
+	else
+#		printf("%.1fG\n-\n#81a2be", mem_free/1024/1024)
+		printf("%.1fG\n-\n#aaaaaa", mem_free/1024/1024)
+
+	# TODO: short text
+
+	# TODO: color (if less than X%)
+}
+' /proc/meminfo
+
+
+
+
+

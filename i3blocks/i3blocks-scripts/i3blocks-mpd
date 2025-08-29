@@ -1,0 +1,24 @@
+#!/bin/sh
+
+maxlength=46
+MPD_HOST=192.168.178.20
+
+p="$(mpc | grep playing | wc -l)"
+if [ "$p" -gt 0 ]; then
+  a="$(mpc | head -n 1 | sed 's/playing//g' | cut -b -${maxlength})"
+  b="$(mpc | head -n 2 | tail -n 1 | sed 's/playing//' | sed 's/\[\]//' | sed 's/^\ //' | cut -b -${maxlength}| sed 's/\ \ //')"
+  l="$(echo "$a" | wc -c)"
+  if [ "$l" -lt "$maxlength" ]; then
+    echo "$a ::: $b"
+  else
+    echo "${a}... ::: ${b} ($l)"
+  fi
+  else
+  echo "not playing"
+fi
+
+echo "-"
+echo "#f4bf75"
+
+
+

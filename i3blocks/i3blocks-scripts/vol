@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#amixer sget Master | grep ']' | cut -d"[" -f 2- | cut -d"]" -f 1 | head -n 1 | tr '\n' ' '; echo -n " "
+left="$(amixer -c 1 | grep -i 'front left: playback' | grep -vE '^.*back \[on\]$' | tr ' ' '\n' | grep '%\]' | tr '\n' ' ')"
+right="$(amixer -c 1 | grep -i 'front right: playback' | grep -vE '^.*back \[on\]$' | tr ' ' '\n' | grep '%\]' | tr '\n' ' ')"
+if [[ "$left" == "$right" ]]; then
+  echo "$left"
+else
+  echo "Channels differ ($left/$right)"
+fi
+echo "-"
+echo "#aaaaaa"
+#echo "#8c9440"
+

@@ -50,7 +50,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -115,9 +115,9 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
+set $ws1 "1:   Librewolf"
 set $ws2 "2"
-set $ws3 "3"
+set $ws3 "3: Ferdium"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
@@ -187,16 +187,39 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	status_command i3blocks  -c /home/yashwanth/.config/i3blocks/i3blocks.conf
-}
+	status_command i3blocks -c /home/$USER/.config/i3blocks/i3blocks.conf
+ 	font pango: ProFontWindows Nerd Font Bold 12
+	position top
+	height 20
+  colors {
+    separator #268bd2
+    background #000000
+    statusline #839496
+    focused_workspace #fff900 #6c71c4 #66ff00
+    active_workspace #fdf6e3 #6c71c4 #fdf6e3
+    inactive_workspace #002b36 #586e75 #002b36
+    urgent_workspace #d33682 #d33682 #c10020
+    }
+  }
+client.focused #6c71c4 #6c71c4 #66ff00 #66ff00
+client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
+client.unfocused #073642 #073642 #93a1a1 #ffffff
+client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
-exec --no-startup-id sudo thermald &
+#exec --no-startup-id sudo thermald &
 exec --no-startup-id picom &
-exec --no-startup-id mongod &
+#exec --no-startup-id mongod &
 
-exec --no-startup-id feh --bg-scale ~/Pictures/ferrari499p.jpg
+#exec --no-startup-id feh --bg-scale ~/Pictures/ferrari499p.jpg
 
 bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+x exec i3lock
 
-exec terminator
-exec librewolf
+exec_always xrandr --output eDP-1 --mode 1920x1080
+
+exec --no-startup-id feh --bg-fill /home/zaq/Pictures/01.jpg
+
+for_window [class="librewolf"] move to workspace $ws1
+for_window [class="Ferdium"] move to workspace $ws3
+gaps inner 15
+gaps outer 5

@@ -1,0 +1,16 @@
+#!/bin/sh
+export MPD_HOST=192.168.178.20
+p="$(mpc | grep playing | wc -l)"
+if [ "$p" -gt 0 ]; then
+a="$(mpc | head -n 1 | sed 's/playing//g' | cut -b -46)"
+b="$(mpc | head -n 2 | tail -n 1 | sed 's/playing//' | cut -b -46)"
+echo "$a $b"
+else
+echo "[not playing]"
+fi
+echo "-"
+#echo "#f0c674"
+echo "#aaaaaa"
+
+
+

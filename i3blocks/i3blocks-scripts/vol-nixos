@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+a=($(pulsemixer -l | grep 'Channel A' | grep Sink | cut -d"[" -f 2- | cut -d"]" -f 1 | tr -d ",%'"))
+l="${a[0]}"
+r="${a[1]}"
+
+echo -n -e '\uf028 Vol: ' 
+
+if [[ "$l" == "$r" ]]; then
+  echo "$l"
+else
+  echo "${l}/${r}"
+fi
+
+

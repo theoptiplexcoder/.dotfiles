@@ -1,0 +1,24 @@
+#!/bin/sh
+
+#dev="wlp3s0"
+#dev="eth0"
+#dev="enp0s25"
+#dev="enp34s0"
+dev="enp4s0"
+
+echo -n -e '\uf98c '
+echo -n "$dev: "
+
+# a = RX, b = TX
+a="$(ifconfig "$dev" | grep -E '^.*RX.*bytes.*$' | xargs | cut -d" " -f 3 | numfmt --to=iec)"
+b="$(ifconfig "$dev" | grep -E '^.*TX.*bytes.*$' | xargs | cut -d" " -f 3 | numfmt --to=iec)"
+
+echo "[RX: $a, TX: $b]"
+echo "RX: $a, TX: $b"
+#echo "#81a2be"
+#echo "#aaaaaa"
+
+
+
+
+
