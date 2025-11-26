@@ -224,5 +224,5 @@ for_window [class="Ferdium"] move to workspace $ws3
 gaps inner 15
 gaps outer 5
 
-
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
