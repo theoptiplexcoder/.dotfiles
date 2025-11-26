@@ -217,9 +217,12 @@ bindsym $mod+x exec i3lock
 
 exec_always xrandr --output eDP-1 --mode 1920x1080
 
-exec --no-startup-id feh --bg-fill /home/zaq/Pictures/01.jpg
+exec --no-startup-id feh --bg-fill /home/zaq/Pictures/wallpapers/red_mountain.jpg
 
 for_window [class="librewolf"] move to workspace $ws1
 for_window [class="Ferdium"] move to workspace $ws3
 gaps inner 15
 gaps outer 5
+
+
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
