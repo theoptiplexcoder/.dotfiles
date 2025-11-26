@@ -1,2 +1,11 @@
 #!/bin/sh
-i3-msg -t subscribe -m '[ "window", "workspace" ]' | jq -r --unbuffered 'select( .change == "title" or .change == "focus" ) | .container.name // ""'
+
+# Print the currently focused window's title for i3blocks
+
+# Query the focused container
+title=$(i3-msg -t get_tree \
+    | jq -r '.. | objects | select(.focused? == true).name // empty')
+
+# Fallback to empty string
+echo "${title:-}"
+
