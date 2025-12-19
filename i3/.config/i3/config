@@ -201,7 +201,7 @@ bar {
     urgent_workspace #d33682 #d33682 #c10020
     }
   }
-client.focused #6c71c4 #6c71c4 #66ff00 #66ff00
+client.focused  #f5f5f5  #f5f5f5  #f5f5f5  #f5f5f5 
 client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
 client.unfocused #073642 #073642 #93a1a1 #ffffff
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
@@ -226,3 +226,9 @@ gaps outer 5
 
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+
+default_border pixel 8
+
+gaps inner 15
+
+exec --no-startup-id picom
