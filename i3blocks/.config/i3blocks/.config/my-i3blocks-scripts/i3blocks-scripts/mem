@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+import psutil
+a = dict(psutil.virtual_memory()._asdict())['percent']
+print(u'\uf85a', end=' ')
+print('Mem used: ' + str(a) + "%")
+

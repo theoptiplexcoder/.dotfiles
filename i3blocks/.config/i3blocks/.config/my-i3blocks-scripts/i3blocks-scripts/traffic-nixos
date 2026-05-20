@@ -1,0 +1,20 @@
+#!/bin/sh
+
+#dev="wlp3s0"
+dev="enp34s0"
+
+echo -n "$dev: "
+
+# a = RX, b = TX
+a="$(ifconfig "$dev" | grep --color=never 'RX packets' | xargs | cut -d":" -f 2- | cut -d"(" -f 2 | cut -d")" -f 1)"
+b="$(ifconfig "$dev" | grep --color=never 'TX packets' | xargs | cut -d":" -f 2- | cut -d"(" -f 2 | cut -d")" -f 1)"
+
+echo "RX: $a, TX: $b"
+echo "RX: $a, TX: $b"
+
+# echo "#f4bf75"
+
+
+
+
+

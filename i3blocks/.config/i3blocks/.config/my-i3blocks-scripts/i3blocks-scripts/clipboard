@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo -n "["
+xclip -o | sed 's/^ \+//' | tr '\n' ':' | tr -cd '\11\12\15\40-\176' | cut -b 1-30 | tr '\n' ' ' | sed 's/ \+$//'
+
+#xclip -o | tr -cd '[[:alnum:]]._-' | cut -b 1-20 | tr '\n' ' '
+#xclip -o | tr -cd '[[:alnum:]]._-' | cut -b 1-20 | tr '\n' ' '
+echo -e "]\n-"
+echo "#b5bd68"
+
+
+
