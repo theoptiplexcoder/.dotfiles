@@ -1,0 +1,20 @@
+{
+  "plugins": {
+    "cole.nvim": {
+      "rev": "74f6a8e1bbce0d9a845a339d849bca3c0bec7aaa",
+      "src": "https://github.com/thekylehuang/cole.nvim"
+    },
+    "mason.nvim": {
+      "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
+      "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "nvim-treesitter": {
+      "rev": "e82ef6ae2c3eeb96c6916b29917f96bf630b2cdb",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "pi.nvim": {
+      "rev": "9b619b4f9fb96fa4dc1a6a7776a651980cd819a0",
+      "src": "https://github.com/pablopunk/pi.nvim"
+    }
+  }
+}

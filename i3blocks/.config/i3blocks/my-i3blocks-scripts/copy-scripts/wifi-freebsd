@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+ssid="$(ifconfig wlan0 2>&1 | grep 'ssid ' | tr '"' '\n' | sed -n 2p)"
+other="$(ifconfig wlan0 2>&1 | grep 'ssid ' | tr '"' '\n' | sed -n 3p | cut -d " " -f 2-7 | sed 's/channel/CH/;s/5220 MHz/5GHz/;s/2437 MHz/2.4GHz/')"
+echo "$ssid  [$other]"
+
+

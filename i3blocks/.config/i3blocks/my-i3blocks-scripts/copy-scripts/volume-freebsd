@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+a=$(mixer vol; mixer pcm)
+vol="$(echo $a | cut -d" " -f 7)"
+voll="$(echo $vol | cut -d":" -f 1)"
+volr="$(echo $vol | cut -d":" -f 2)"
+if [[ "$voll" == "$volr" ]]; then v="$voll"; else v="$voll:$volr"; fi
+pcm="$(echo $a | cut -d" " -f 14)"
+pcml="$(echo $pcm | cut -d":" -f 1)"
+pcmr="$(echo $pcm | cut -d":" -f 2)"
+if [[ "$pcml" == "$pcmr" ]]; then p="$pcml"; else p="$pcml:$pcmr"; fi
+echo "Vol: $v  PCM: $p"
+

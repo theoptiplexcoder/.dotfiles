@@ -1,0 +1,8 @@
+#!/bin/sh
+c="$(acpi | grep 'Charging' >/dev/null 2>&1 && echo ' (Charging)')"
+a="$(acpi | cut -d" " -f 4 | sed 's/,$//')"
+echo "${a}${c}"
+echo "-"
+echo "#66d9ef"
+
+

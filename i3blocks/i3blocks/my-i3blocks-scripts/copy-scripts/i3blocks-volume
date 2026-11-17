@@ -1,0 +1,5 @@
+#!/bin/bash
+amixer sget Master | grep ']' | cut -d"[" -f 2- | cut -d"]" -f 1 | head -n 1
+echo "-"
+echo "#ae81ff"
+

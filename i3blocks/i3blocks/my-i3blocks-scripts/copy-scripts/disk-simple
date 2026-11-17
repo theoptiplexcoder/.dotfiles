@@ -1,0 +1,4 @@
+#!/bin/sh
+echo -n "/: "
+df -k / | grep -v '^Filesystem' | xargs | cut -d" " -f 5 
+

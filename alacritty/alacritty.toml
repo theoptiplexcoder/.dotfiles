@@ -1,8 +1,0 @@
-[general]
-import = [
-    "~/.config/alacritty/themes/hyper.toml"
-]
-
-[font]
-normal = { family = "AurulentSansMNerdFontMono", style = "Regular" }
-size = 9

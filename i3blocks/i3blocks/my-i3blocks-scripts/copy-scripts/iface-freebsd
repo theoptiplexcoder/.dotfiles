@@ -1,0 +1,7 @@
+#!/bin/sh
+dev=wlan0
+echo -n "${dev}: "
+v4="$(ifconfig "$dev" | grep 'inet ' | xargs | cut -d" " -f 2)"
+v6="$(ifconfig "$dev" | grep -v 'fe80' | grep 'inet6 ' | xargs | cut -d" " -f 2 | cut -d"%" -f 1)"
+echo "$v4  $v6"
+

@@ -1,0 +1,4 @@
+#!/bin/sh
+a="$(apm | grep 'Remaining battery life' | xargs | cut -d" " -f 4)"
+echo "Bat: $a"
+

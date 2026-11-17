@@ -1,0 +1,10 @@
+#!/bin/sh
+active="$(top -n 1 | grep '^Mem' | awk '{printf $2}')"
+inactive="$(top -n 1 | grep '^Mem' | awk '{printf $4}')"
+laundry="$(top -n 1 | grep '^Mem' | awk '{printf $6}')"
+wired="$(top -n 1 | grep '^Mem' | awk '{printf $8}')"
+free="$(top -n 1 | grep '^Mem' | awk '{printf $10}')"
+#echo "[$active] $inactive $laundry $wired ($free)"
+echo "Mem: $active"
+
+
